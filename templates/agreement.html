@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="header">
+  <span>Heading for the HTML file</span>
+</div>
+<div class="container">
+<h1>First Section Heading for the HTML file</h1>
+<p>Opening paragraph for for the HTML file.</p>
+<form action="{{ url_for('save_agreement') }}" method="post" id="myForm" enctype="multipart/form-data">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="name">Name</label>
+      <input type="name" name="name" class="form-control" id="name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="position">Position</label>
+      <input class="form-control" name="position" id="position">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="company">Company</label>
+    <input type="text" name="company" class="form-control" id="company">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Mobile</label>
+      <input type="tel" name="mobile" class="form-control" id="mobile">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Landline">Landline</label>
+      <input type="tel" name="landline" class="form-control" id="landline">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" name="email" class="form-control" id="email">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="website">Website</label>
+      <input type="text" name="website" class="form-control" id="website">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" name="address1" class="form-control" id="address1">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" name="address2" class="form-control" id="address2">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="town">Town / City</label>
+      <input type="text" name="town" class="form-control" id="town">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="county">County</label>
+      <input type="text" name="county" class="form-control" id="county">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="postcoe">Postcode</label>
+      <input type="text" name="postcode" class="form-control" id="postcode">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="item">Item</label>
+    <input type="text" name="item" class="form-control" id="item">
+  </div>
+  <div class="form-group">
+    <label for="itemdetail">Special Conditions</label>
+    <textarea class="form-control" id="itemdetail" name="itemdetail" rows="4" cols="50"></textarea>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="value">Approximate value</label>
+      <input type="value" name="value"  class="form-control" id="value">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="expiry">Item Expiry</label>
+      <input type="date" name="expiry" class="form-control" id="expiry">
+    </div>
+  </div>
+<h2>Second Section Heading</h2>
+<p>
+  <ol>
+    <li>First item in the general terms and conditions.</li>
+    <li>Second item in the general terms and conditions.</li>
+    <li>Third item in the general terms and conditions.</li>
+  </ol>
+</p>
+<div class="form-group">
+  <label for="date">Agreement Date</label>
+  <input type="date" name="date" class="form-control" id="date">
+</div>
+<div class="form-group">
+  <label for="signature">Signature</label>
+  <div id="signature-pad" class="signature-pad">
+    <div class="signature-pad--body">
+      <canvas width=342px height=200px></canvas>
+    </div>
+  </div>
+  <input type="hidden" name="image_data" id="image_data">
+</div>
+<div class="container">
+  <input type="button" class="btn btn-secondary" onclick="submitForm()" value="Save Agreement">
+  <input type="button" class="btn btn-secondary" onclick="clearSignature()" data-action="clear" value="Clear Signature">
+  <input type="reset" class="btn btn-secondary" onclick="clearForm()" value="Clear Form">
+</div>
+</form>
+<div class="row">
+  <div class="column">
+    <img src="static/Logo1.jpg" alt="Logo1" style="height:100px">
+  </div>
+  <div class="column">
+    <img src="static/Logo2.jpg" alt="Logo2" style="height:100px">
+  </div>
+</div>
+<script>
+  var wrapper = document.getElementById("signature-pad");
+  var canvas = wrapper.querySelector("canvas");
+  var clearButton = wrapper.querySelector("[data-action=clear]");
+  var signaturePad = new SignaturePad(canvas, {
+    // It's Necessary to use an opaque color when saving image as JPEG;
+    // this option can be omitted if only saving as PNG or SVG
+    backgroundColor: "rgb(255, 255, 255)"
+  });
+
+  function submitForm() {
+    document.getElementById("image_data").value = canvas.toDataURL("image/png");
+    document.getElementById("myForm").submit();
+  }
+
+  function clearSignature() {
+    signaturePad.clear();
+  }
+
+  function clearForm() {
+    location.reload()
+  }
+</script>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block title %}Page Not Found{% endblock %}
+{% block content %}
+
+<h1>Page not found</h1>
+<p><a href="{{ url_for('index') }}">Click here</a> to go to the Agreement page.</p>
+
+<!-- {{ url_for('index') }} is a var which returns url of index.html-->
+{% endblock %}

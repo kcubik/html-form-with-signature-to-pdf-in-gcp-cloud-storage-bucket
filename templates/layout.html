@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport content="width="device-width,initial-scale=1">
+<title>Title for the HTML file</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js">
+</script>
+<style>
+  textarea {
+    resize: none;
+  }
+  canvas {
+    border: 1px solid lightgrey;
+  }
+  h1 {
+    font-size: 1.8em;
+    padding-top: 20px;
+  }
+  h2 {
+    font-size: 1.4em;
+    padding-top: 20px;
+  }
+  .row {
+    display: flex;
+    text-align: center;
+  }
+  .column {
+    flex: 33.33%;
+    padding: 10px;
+  }
+  .header {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 20px 10px 20px 10px;
+    background-color: #343a40;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+  {% block content %}{% endblock %}
+</body>
+</html>

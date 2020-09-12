@@ -1,0 +1,6 @@
+runtime: python37
+
+env: standard
+
+env_variables:
+  CLOUD_STORAGE_BUCKET: "BUCKET_NAME"
